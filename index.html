@@ -116,7 +116,7 @@
 
             // Set the request URL for Last.fm
             var lastfm_request_url = 'https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + this.username + '&api_key=' + this.api_key + '&limit=' + self.count + '&format=json';
-
+            console.log(lastfm_request_url);
             // Make a request to the Last.fm API
             var request = new XMLHttpRequest();
             request.open('GET', lastfm_request_url, true);
@@ -193,7 +193,7 @@
 
                     // Set the request URL for Spotify
                     var spotify_request_url = 'https://api.spotify.com/v1/search?query=' + encodeURIComponent(search_query) + '&offset=0&limit=1&type=track';
-
+                    console.log(spotify_request_url);
                     // Make a request to the Spotify API
                     var request = new XMLHttpRequest();
                     request.open('GET', spotify_request_url, true);
