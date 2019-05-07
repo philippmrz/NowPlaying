@@ -1,0 +1,18 @@
+<div id="spotify-widget"></div>
+<input id="uname" type="text">
+<input id="api-key" type="text">
+<button onclick="exe()">slatt!+*OK</button>
+<script src="https://npmcdn.com/spotifyCurrentlyPlaying.js/dist/spotifyCurrentlyPlaying.min.js"></script>
+<script>
+function exe(){
+  let uname = document.querySelector("#uname").value;
+  let key = document.querySelector("#api-key").value;
+  SCP({
+     selector: '#spotify-widget',
+      username: uname,
+      api_key: key,
+     width: '100%',
+     height: '100%'
+  });
+}
+</script>
