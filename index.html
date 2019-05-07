@@ -197,7 +197,7 @@
                     // Make a request to the Spotify API
                     var request = new XMLHttpRequest();
                     request.open('GET', spotify_request_url, true);
-                    request.setRequestHeader('Authorization', 'Bearer ' + document.querySelector("#token").value
+                    request.setRequestHeader('Authorization', 'Bearer ' + document.querySelector("#token").value);
 
                     // Check for a successful response
                     request.onload = function() {
