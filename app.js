@@ -14,6 +14,7 @@ const hash = window.location.hash
       }
       return initial;
   }, {});
+window.location.hash = "";
 
 if (!hash.access_token) {
   window.location.replace(API_AUTH + '?response_type=token' + '&client_id=' + CLIENT_ID +
