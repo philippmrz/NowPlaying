@@ -11,39 +11,3 @@ html, body {
   align-items: center;
   min-height: 100vh;
 }
-
-#wrapper {
-  margin-top: 8vh;
-  display: flex;
-  height: 70vh;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#info {
-  text-align: center;
-  font-size: 2rem;
-  width: 70%;
-  margin: 0;
-}
-
-#form {
-  width: 70%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex-grow: 1;
-  max-height: 45vh;
-  justify-content: space-between;
-}
-
-#input {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-.label {
-  margin-bottom: .2rem;
-}
