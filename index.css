@@ -11,3 +11,16 @@ html, body {
   align-items: center;
   min-height: 100vh;
 }
+
+#color-cont {
+  position: absolute;
+  left: 1rem;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#color-cont *{
+  width: 5rem;
+  height: 3rem;
+}
