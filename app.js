@@ -40,7 +40,8 @@
       COVER.addEventListener('load', function() {
         let vibrant = new Vibrant(COVER);
         let swatches = vibrant.swatches();
-        document.querySelector("body").style.backgroundColor = swatches["DarkVibrant"].getHex();
+        let grad = "linear-gradient(" + swatches["DarkVibrant"].getHex() + ", " + swatches["Vibrant"].getHex() + ")";
+        document.querySelector("body").style.background = grad;
         document.querySelector("body").style.color = swatches["LightVibrant"].getHex();
 
         document.querySelector("#vibrant").style.backgroundColor = swatches["Vibrant"].getHex();
@@ -57,4 +58,12 @@
      });
     }
   }
+  let i = 0;
+  document.querySelector("#cover").addEventListener('click', () => {
+    i++;
+    console.log(i);
+    if (i >= 10) {
+      document.querySelector("#color-cont").style.display = "flex";
+    }
+  })
 }())
