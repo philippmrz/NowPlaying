@@ -22,7 +22,7 @@
   if (!hash.access_token) {
     window.location.replace(API_AUTH + '?response_type=token' + '&client_id=' + CLIENT_ID +
     '&scope=' + encodeURIComponent(SCOPE) +
-    '&redirect_uri=' + encodeURIComponent("http://localhost:8000/"));
+    '&redirect_uri=' + encodeURIComponent("https://philippmrz.github.io/NowPlaying/"));
   }
 
   let HTTP = new XMLHttpRequest();
