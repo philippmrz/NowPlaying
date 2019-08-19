@@ -54,6 +54,8 @@
   function buildPage(songData) {
     let songName = songData.item.name;
     let artistName = songData.item.artists[0].name;
+
+    //Check if song actually changed before rebuilding page
     if (songName != SONG_NAME_P.innerHTML && artistName != ARTIST_NAME_P) {
       //Fill appropriate html elements with information from API
       SONG_NAME_P.innerHTML = songName;
