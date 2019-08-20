@@ -11,11 +11,8 @@
   const hash = extractHash();
 
   //Redirect client to Spotify for authentication if not done already
-  if (!hash.access_token) {
-    window.location.replace(API_AUTH + '?response_type=token' + '&client_id=' + CLIENT_ID +
-    '&scope=' + encodeURIComponent(SCOPE) +
-    '&redirect_uri=' + encodeURIComponent("http://localhost:8000/"));
-  }
+  if (!hash.access_token) requestAuthToken();
+
   updateSong();
   setInterval(updateSong, 5000);
 
@@ -25,6 +22,7 @@
 
     req.onreadystatechange = (e) => {
         if (req.readyState === 4 && req.status == 200) buildPage(JSON.parse(req.responseText));
+        else if (req.readyState === 4 && req.status == 401) requestAuthToken();
     };
   }
 
@@ -42,6 +40,12 @@
       }, {});
     window.location.hash = "";
     return hash;
+  }
+
+  function requestAuthToken() {
+    window.location.replace(API_AUTH + '?response_type=token' + '&client_id=' + CLIENT_ID +
+    '&scope=' + encodeURIComponent(SCOPE) +
+    '&redirect_uri=' + encodeURIComponent("https://philippmrz.github.io/NowPlaying/"));
   }
 
   function requestSongInfo() {
