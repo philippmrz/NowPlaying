@@ -6,7 +6,8 @@
   const SONG_NAME_P = document.querySelector('#song-name');
   const ARTIST_NAME_P = document.querySelector('#artist-name');
   const COVER = document.querySelector("#cover");
-
+  const ERR_P = document.querySelector("#error-message");
+  let deviceActive = true;
 
   const hash = extractHash();
 
@@ -19,10 +20,24 @@
 
   function updateSong() {
     let req = requestSongInfo();
-
     req.onreadystatechange = (e) => {
-        if (req.readyState === 4 && req.status == 200) buildPage(JSON.parse(req.responseText));
-        else if (req.readyState === 4 && req.status == 401) requestAuthToken();
+      if (req.readyState === 4) {
+          switch (req.status) {
+            case 200:
+              buildPage(JSON.parse(req.responseText));
+              break;
+            case 401:
+              requestAuthToken();
+              break;
+            case 204:
+              // Display device inactive error if not already displayed
+              if (deviceActive) displayError("deviceInactive");
+              break;
+            default:
+              displayError();
+
+          }
+        }
     };
   }
 
@@ -57,6 +72,11 @@
   }
 
   function buildPage(songData) {
+    if (!deviceActive) {
+      deviceActive = true;
+      document.querySelector("#main-container").style.display = "flex";
+      ERR_P.style.display = "none";
+    }
     let songName = songData.item.name;
     let artistName = songData.item.artists[0].name;
 
@@ -87,6 +107,17 @@
     document.querySelector("#dark-vibrant").style.backgroundColor = swatches["DarkVibrant"].getHex();
     document.querySelector("#dark-muted").style.backgroundColor = swatches["DarkMuted"].getHex();
     document.querySelector("#light-vibrant").style.backgroundColor = swatches["LightVibrant"].getHex();
+  }
+
+  function displayError(error) {
+    if (error === "deviceInactive") {
+      ERR_P.innerHTML = "Your device is inactive";
+      deviceActive = false;
+    }
+    else ERR_P.innerHTML = "Seems like there was an error, try reloading the page";
+
+    ERR_P.style.display = "initial";
+    document.querySelector("#main-container").style.display = "none";
   }
 }())
 

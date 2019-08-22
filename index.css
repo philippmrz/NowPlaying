@@ -21,6 +21,10 @@ p {
   margin: 0;
 }
 
+#error-message {
+  display: none;
+}
+
 #main-container {
   height: 35rem;
   display: flex;
@@ -48,7 +52,7 @@ img {
 
 
 
-
+/* CSS for debug color palette */
 #color-cont {
   position: absolute;
   left: 1rem;
