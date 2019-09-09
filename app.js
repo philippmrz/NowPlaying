@@ -13,6 +13,7 @@
 
   //Redirect client to Spotify for authentication if not done already
   if (!hash.access_token) requestAuthToken();
+  else document.querySelector("#start-popup").style.display = "none";
 
   updateSong();
   setInterval(updateSong, 5000);
@@ -58,9 +59,9 @@
   }
 
   function requestAuthToken() {
-    window.location.replace(API_AUTH + '?response_type=token' + '&client_id=' + CLIENT_ID +
+    document.querySelector("#redir-link").href = API_AUTH + '?response_type=token' + '&client_id=' + CLIENT_ID +
     '&scope=' + encodeURIComponent(SCOPE) +
-    '&redirect_uri=' + encodeURIComponent("https://philippmrz.github.io/NowPlaying/"));
+    '&redirect_uri=' + encodeURIComponent("http://localhost:8000/");
   }
 
   function requestSongInfo() {
