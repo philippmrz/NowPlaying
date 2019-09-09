@@ -61,7 +61,7 @@
   function requestAuthToken() {
     document.querySelector("#redir-link").href = API_AUTH + '?response_type=token' + '&client_id=' + CLIENT_ID +
     '&scope=' + encodeURIComponent(SCOPE) +
-    '&redirect_uri=' + encodeURIComponent("http://localhost:8000/");
+    '&redirect_uri=' + encodeURIComponent("https://philippmrz.github.io/NowPlaying/");
   }
 
   function requestSongInfo() {
